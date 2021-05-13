@@ -27,18 +27,29 @@ public class Ch05{
          }
          
 	}
-	
+	/*-----------------------------------------------------------------
+	 * The threeHeads turns head if the random number is odd and
+	 * turns tail if random number is even. I learned to use a counter
+	 * for head, which is the value of interest. It makes sense to count
+	 * only heads even when outputing tails.
+	 * I struggled where the random number variable should be located 
+	 * in the while loop or outside of the loop. But it makes sense to
+	 * be inside the while loop, so that new random number is generated 
+	 * in each loop.
+	 * I gained inspiration from https://stackoverflow.com/questions/27917444/how-do-i-create-a-java-random-number-generator-that-creates-3-numbers-using-seed 
+	 * However, I believe I studied in great depth to complete the program by myself.
+	 * 
+	*/-----------------------------------------------------------------
 	public static void threeHeads(int seed){
     Random rand = new Random(seed);
-    int head = 0;
+    int head = 0; // This is a counter to count the number of head. 
 			while ( head < 3 ){
 				int n = rand.nextInt(99);
-				//int random=1+randomNumbers.nextInt(8);
-
-                    if ( (n % 2) > 0) {
+				
+                    if ( (n % 2) > 0) { // flip head if random number is odd
                         System.out.print("H ");
                         head++;
-                    } else {
+                    } else { // flip tail if random number is even
                         System.out.print("T ");
                         head = 0; 
                       }   
