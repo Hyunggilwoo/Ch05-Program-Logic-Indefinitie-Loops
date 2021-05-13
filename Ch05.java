@@ -12,6 +12,7 @@ public class Ch05{
 		printFactors(24);
 		threeHeads(12345);
 		digitSum(-123456);
+		isAllVowels("aeioeio");
 	}
      public static void printFactors(int n){
 		 
@@ -30,16 +31,14 @@ public class Ch05{
          System.out.println();
 	}
 	/*-----------------------------------------------------------------
-	 * The threeHeads turns head if the random number is odd and
-	 * turns tail if random number is even. I learned to use a counter
-	 * for head, which is the value of interest. It makes sense to count
+	 * The threeHeads turns head if the random number can generate boolean values.
+	 * I learned to use a counter head, which is the value of interest. It makes sense to count
 	 * only heads even when outputing tails.
-	 * I struggled where the random number variable should be located 
-	 * in the while loop or outside of the loop. But it makes sense to
-	 * be inside the while loop, so that new random number is generated 
-	 * in each loop.
+	 * I struggled finding a solution create if else statement with even and odd number,
+	 * because I had to account for 0 as well. 
 	 * I gained inspiration from https://stackoverflow.com/questions/27917444/how-do-i-create-a-java-random-number-generator-that-creates-3-numbers-using-seed 
-	 * However, I believe I studied in great depth to complete the program by myself.
+	 * However, I got help from classmates and finally concluded that 
+	 * I should use boolean.
 	 * 
 	-----------------------------------------------------------------*/
 	public static void threeHeads(int seed){
@@ -81,6 +80,35 @@ public class Ch05{
 				
 		} 
 			return sum;
+	}
+	
+	/*
+	 * Learned from Java api that isVowels.indexOf(s.charAt(i)) locates 
+	 * the index in isVowels where the s.charAt(i) is. Normally, if a 
+	 * letter in the index is found, it will output integer from 0 to 
+	 * positive integer. If no character is found, -1 will be yielded.
+	 * I wondered if I could return a boolean answer from the boolean expression
+	 * (isVowels.indexOf(s.charAt(i)) == -1);, but return statement will return back to the top 
+	 * without performing the necessary for loop.
+	 * So I took the inspiration from https://github.com/ramakastriot/practiceit/blob/master/chapter5/isAllVowels.java
+	 * However, I believed I did a due dilligence of understanding the methods
+	 * and trying to find alternative way to solve the problem.
+	 * 
+	 */
+	public static boolean isAllVowels(String s){
+		if (s == null) {
+			throw new IllegalArgumentException("String cannot be null");
+		}
+		if (s ==" ") {
+			throw new IllegalArgumentException("true"); //empty string is still true because there is no non-vowel characters.
+		}
+	
+		String isVowels = "aeiouAEIOU";
+		for(int i = 0; i < s.length(); i++) {
+			if (isVowels.indexOf(s.charAt(i)) == -1) 
+				return false;
+		} 
+			return true;			
 	}
 	
 }
